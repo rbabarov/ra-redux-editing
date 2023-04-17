@@ -4,7 +4,7 @@ stack: node 14  # окружение
 
 branches:
   only:
-    - main  # ветка git
+    - master  # ветка git
 
 cache: node_modules  # кеширование
 
@@ -13,19 +13,16 @@ environment:
     secure: SUkMN/mFKnrgQILQu8u9EdOxRoOeaXVDaCJ1+rR7mnUj4RuVa/po5uZvt9V+8m61
 
 install:
-  - npm install  # команда установки зависимостей
+  - yarn  # команда установки зависимостей
 
 build: off  # отключаем встроенную в appveyor систему сборки
 
 build_script:
-  - npm run build   # команда сборки
+  - yarn build   # команда сборки
 
-test_script:
-  # - npm run lint && npm run test  # скрипт тестирования
-
-deploy_script:  # скрипт развёртывания
+deploy_script: # скрипт развёртывания
   - git config --global credential.helper store
   - git config --global user.name rbabarov
-  - git config --global user.email rbabarov@gmail.com
-  - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"
+  - git config --global user.email rbabarov@yandex.ru
+  - ps: Set-Content -Path "$HOME\.git-credentials" -Value "https://$($env:access_token):x-oauth-basic@github.com`n" -NoNewline
   - npx push-dir --dir=build --branch=gh-pages --force --verbose
