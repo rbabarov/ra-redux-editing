@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 1.1rem;
+}
+
+#root {
+  max-width: 650px;
+  margin: 20px auto;
+}
+/* 
+.form-input {
+
+}
+
+.btn-save {
+
+} */
+
+.btn-edit, .btn-remove {
+  width: 27px;
+  height: 27px;
+  margin: 2px;
+}
+
+.btn-edit {
+  background-image: url(../image/edit.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.btn-remove {
+  background-image: url(../image/remove.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.item-text {
+  margin-right: 10px;
+  align-self: flex-end;
+}
+
+.list > li {
+  display: flex;
+}
